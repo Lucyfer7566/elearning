@@ -1,0 +1,205 @@
+.auth-container {
+    font-size: 20px;
+    display: flex;
+    width: 1440px;
+    height: 900px;
+    margin: 0 auto;
+}
+
+.auth-image {
+    padding: 40px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.auth-image img {
+    margin: 0 auto;
+    border-radius: 29px;
+}
+
+.image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 100px;
+    color: white;
+}
+
+.auth-form {
+    margin: 0 auto;
+    width: 30%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.auth-title {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 100px;
+}
+
+.auth-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.btn {
+    background-color: #92d6d6;
+    border-radius: 33px;
+}
+
+.auth-button {
+    width: 156px;
+    padding: 10px 20px;
+    margin: 10px 10px;
+    border: none;
+    border-radius: 33px;
+    background-color: #92d6d6; /* Màu nền mặc định */
+    color: white;
+    cursor: pointer;
+}
+
+.auth-button.active {
+    background-color: #49bbbd; /* Màu nền khi active */
+}
+
+.auth-description {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.remember-me {
+    display: flex;
+    justify-content: space-between; /* Canh lề trái checkbox và phải link */
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.forgot-password {
+    float: right;
+    color: #1890ff;
+}
+
+.ant-form-item-label > label {
+    font-weight: bold;
+}
+
+.ant-input-password-icon {
+    color: #999;
+}
+
+#basic_identifier {
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 40px;
+    border: 1px solid #49bbbd;
+}
+
+#basic_email {
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 40px;
+    border: 1px solid #49bbbd;
+}
+
+#basic_fullname {
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 40px;
+    border: 1px solid #49bbbd;
+}
+
+#basic_phonenumber {
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 40px;
+    border: 1px solid #49bbbd;
+}
+
+.ant-input-affix-wrapper.ant-input-password {
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 40px;
+    border: 1px solid #49bbbd;
+}
+
+/* Style cho input required */
+.input-required:focus {
+    outline: none;
+    border: 2px solid #49bbbd;
+}
+
+.input-required::placeholder {
+    color: #999;
+}
+
+/* Style cho input lỗi */
+.input-error {
+    border-color: red !important;
+}
+
+.ant-form-item-explain-error {
+    color: red;
+}
+
+/* Styles cho modal */
+.custom-modal .ant-modal-content {
+    border-radius: 36px;
+}
+
+.custom-modal .ant-modal-header {
+    border-top-left-radius: 36px;
+    border-top-right-radius: 36px;
+    background-color: #49bbbd;
+    color: white;
+    border-bottom: none;
+}
+
+.custom-modal .ant-modal-title {
+    font-size: 18px;
+}
+
+.custom-modal .ant-modal-footer {
+    display: flex;
+    justify-content: center;
+    border-top: none;
+}
+
+.custom-modal .ant-btn-primary {
+    width: 200px;
+    height: 53px;
+    font-size: 20px;
+    border-radius: 36px;
+    background: #49bbbd;
+    border: none;
+}
+
+.custom-modal .ant-btn-default {
+    width: 200px;
+    height: 53px;
+    font-size: 20px;
+    border-radius: 36px;
+    border: 1px solid #49bbbd;
+}
+
+.custom-modal .ant-input {
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 40px;
+    border: 1px solid #49bbbd;
+}
+
+.custom-modal .ant-input:focus {
+    border-color: #49bbbd;
+    box-shadow: 0 0 0 2px rgba(73, 187, 189, 0.2);
+}
+
+.custom-modal .ant-form-item-label {
+    font-weight: bold;
+}
