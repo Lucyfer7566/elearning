@@ -33,19 +33,37 @@ const Register: React.FC = () => {
         // Reset lỗi trước khi validate
         setErrors({});
 
-        // Kiểm tra các trường không được bỏ trống
         const newErrors: Record<string, string> = {};
+
+        const emailAndGmailRegex = /^[a-z0-9._-]+@gmail\.com$/;
         if (!values.email) {
             newErrors.email = "Vui lòng nhập email.";
+        } else if (!emailAndGmailRegex.test(values.email)) {
+            newErrors.email = "Email không hợp lệ hoặc không phải Gmail.";
         }
+
+        const fullNameRegex = /^[a-zA-Z0-9\s]{5,}$/; // Tên phải có ít nhất 5 ký tự, không chứa ký tự đặc biệt
         if (!values.fullname) {
             newErrors.fullname = "Vui lòng nhập họ và tên.";
+        } else if (!fullNameRegex.test(values.fullname)) {
+            newErrors.fullname =
+                "Họ và tên phải có ít nhất 5 ký tự và không chứa ký tự đặc biệt.";
         }
+
+        const phoneRegex = /^0\d{9}$/; // Số điện thoại bắt đầu bằng 0 và có 10 chữ số
         if (!values.phonenumber) {
             newErrors.phonenumber = "Vui lòng nhập số điện thoại.";
+        } else if (!phoneRegex.test(values.phonenumber)) {
+            newErrors.phonenumber = "Số điện thoại không hợp lệ.";
         }
+
+        const passwordRegex =
+            /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$#*!%&])[A-Za-z\d@$#*!%&]{8,}$/; // Mật khẩu có ít nhất 8 ký tự, ít nhất 1 chữ hoa, 1 chữ thường, 1 số, 1 ký tự đặc biệt
         if (!values.password) {
             newErrors.password = "Vui lòng nhập mật khẩu.";
+        } else if (!passwordRegex.test(values.password)) {
+            newErrors.password =
+                "Mật khẩu phải chứa ít nhất 8 ký tự, bao gồm chữ hoa, chữ thường, số và ký tự đặc biệt.";
         }
 
         // Nếu có lỗi, cập nhật state errors và dừng thực thi
@@ -62,7 +80,6 @@ const Register: React.FC = () => {
                 );
             }
         } catch (error: any) {
-            // Kiểm tra error.response và lấy thông báo lỗi từ response
             if (
                 error.response &&
                 error.response.data &&
@@ -86,8 +103,8 @@ const Register: React.FC = () => {
                     src={heroRegister}
                     alt="Register"
                     style={{
-                        width: "731px",
-                        height: "825px",
+                        width: "100%",
+                        height: "auto",
                         objectFit: "cover",
                     }}
                 />

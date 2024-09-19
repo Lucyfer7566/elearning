@@ -37,13 +37,27 @@ const Login: React.FC = () => {
         // Reset lỗi trước khi validate
         setErrors({});
 
-        // Kiểm tra các trường không được bỏ trống
         const newErrors: Record<string, string> = {};
+
+        // Validate email/phone
+        const phoneRegex = /^0\d{9}$/; // Bắt đầu bằng 0 và có 10 chữ số
+        const emailRegex = /^[a-z0-9._-]+@gmail\.com$/; // Email không chứa chữ hoa hoặc ký tự đặc biệt và kết thúc bằng @gmail.com
+
         if (!values.identifier) {
             newErrors.identifier = "Vui lòng nhập email hoặc số điện thoại.";
+        } else if (phoneRegex.test(values.identifier)) {
+            // Nếu là số điện thoại hợp lệ
+        } else if (!emailRegex.test(values.identifier)) {
+            newErrors.identifier = "Email không hợp lệ hoặc không phải Email.";
         }
+
+        const passwordRegex =
+            /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$#*!%&])[A-Za-z\d@$#*!%&]{8,}$/; // Mật khẩu có ít nhất 8 ký tự, ít nhất 1 chữ hoa, 1 chữ thường, 1 số, 1 ký tự đặc biệt
         if (!values.password) {
             newErrors.password = "Vui lòng nhập mật khẩu.";
+        } else if (!passwordRegex.test(values.password)) {
+            newErrors.password =
+                "Mật khẩu phải chứa ít nhất 8 ký tự, bao gồm chữ hoa, chữ thường, số và ký tự đặc biệt.";
         }
 
         // Nếu có lỗi, cập nhật state errors và dừng thực thi
@@ -80,10 +94,14 @@ const Login: React.FC = () => {
         // Reset lỗi trước khi validate
         setErrors({});
 
-        // Kiểm tra email không được bỏ trống
         const newErrors: Record<string, string> = {};
+
+        const emailRegex = /^[a-z0-9._-]+@gmail\.com$/;
+
         if (!forgotPasswordEmail) {
             newErrors.email = "Vui lòng nhập Email của bạn.";
+        } else if (!emailRegex.test(forgotPasswordEmail)) {
+            newErrors.email = "Email không hợp lệ hoặc không phải Email.";
         }
 
         // Nếu có lỗi, cập nhật state errors và dừng thực thi
@@ -91,6 +109,7 @@ const Login: React.FC = () => {
             setErrors(newErrors);
             return;
         }
+
         try {
             const response = await axiosForgotPassword(forgotPasswordEmail);
             if (response.status === 200) {
@@ -121,8 +140,8 @@ const Login: React.FC = () => {
                     src={heroLogin}
                     alt="Login"
                     style={{
-                        width: "737px",
-                        height: "825px",
+                        width: "100%",
+                        height: "auto",
                         objectFit: "cover",
                     }}
                 />
